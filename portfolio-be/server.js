@@ -2,9 +2,13 @@ const express = require("express");
 const mongo = require("mongoose")
 const cors = require("cors")
 const app = express()
+const uri = "mongodb+srv://saniay007aj:sanjay123@cluster0.ic5sl1o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 app.use(cors())
 app.use(express.json())
-mongo.connect("mongodb://localhost:27017/").then(()=>{
+mongo.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(()=>{
     console.log("Mdb CONNECTED")
 }).catch(()=>{console.log("ERROR")})
 const mySchema = new mongo.Schema({
@@ -33,7 +37,7 @@ app.post('/',async(req,res)=>{
 
 const port = process.env.PORT || 8000;
 app.listen(port,()=>{
-    console.log(`success is listening to ${port}`)
+    console.log(`server is listening to ${port}`)
 })
 
 
