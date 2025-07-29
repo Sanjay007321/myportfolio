@@ -3,7 +3,7 @@ import bbms from "./webs.png"
 // import './src/App.css';
 const ab="<Sanj/>"
 export default function Pro() {
-  const apiUrl = "http://localhost:8000";
+  const apiUrl = "https://myportfolio-2-sb3d.onrender.com";
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
   const [message,setMessage] = useState("");
