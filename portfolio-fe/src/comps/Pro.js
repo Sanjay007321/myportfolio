@@ -13,8 +13,9 @@ export default function Pro() {
   const toggleMenu = ()=>{setMenu(!menu);
     setCancel(!cancel)
   }
-   const handleSubmit = ()=>{
-    console.log(name,email,message)
+   const handleSubmit = (e)=>{
+    e.preventDefault();
+   alert("Welcome");
     fetch(apiUrl,{
     method:"POST",
     headers:{
@@ -90,11 +91,11 @@ export default function Pro() {
         <hr className="animate-pulse duration-150 ms-8 me-8 border-cyan-400 m-4 bg-cyan-500 text-cyan-500 shadow-cyan-500"></hr>
         <div id="contact" className="flex gap-2 p-3 flex-col items-center justify-center">
           <h3>Contact Me</h3>
-          <form className="flex flex-col p-2">
+          <form className="flex flex-col p-2" onClick={handleSubmit}>
             <input value={name} onChange={(e)=>setName(e.target.value)} className="m-2 p-2 border hover:shadow-sm shadow-cyan-300 duration-700" placeholder="Name" type="text"></input>
             <input value={email} onChange={(e)=>setEmail(e.target.value)} className="m-2 p-2 border hover:shadow-sm shadow-cyan-300 duration-700" placeholder="Email" type="text"></input>
             <textarea value={message} onChange={(e)=>setMessage(e.target.value)} type="text" className="border p-2 m-2 h-[100px] duration-700 hover:shadow-sm shadow-cyan-300" placeholder="Message"></textarea>
-            <input placeholder="Submit" onClick={handleSubmit} className="rounded-full mt-6 hover:shadow-sm hover:animate-pulse ease-in-out duration-900 shadow-cyan-300 bg-slate-700" type="submit"></input>
+            <input placeholder="Submit" className="rounded-full mt-6 hover:shadow-sm hover:animate-pulse ease-in-out duration-900 shadow-cyan-300 bg-slate-700" type="submit"></input>
           </form>
         </div>
         <hr className="border-cyan-400 animate-pulse duration-150  m-4 ms-8 me-8 bg-cyan-500 text-cyan-500 shadow-cyan-500"></hr>
