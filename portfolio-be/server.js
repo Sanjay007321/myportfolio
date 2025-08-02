@@ -10,6 +10,7 @@ mongo.connect(uri, {
   useUnifiedTopology: true
 }).then(()=>{
     console.log("Mdb CONNECTED")
+    
 }).catch(()=>{console.log("ERROR")})
 const mySchema = new mongo.Schema({
     name: {required:true,
@@ -20,6 +21,9 @@ const mySchema = new mongo.Schema({
         type:String}
     })
 const model = mongo.model("msg",mySchema)
+app.get('/',(req,res)=>{
+  res.send("<h2>Server is Live</h2>");
+})
 app.post('/',async(req,res)=>{
     try{
         const newUser = await model.create(req.body);
